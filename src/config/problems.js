@@ -91,9 +91,9 @@ const PROBLEMS = [
   "https://leetcode.com/problems/middle-of-the-linked-list",
   "https://leetcode.com/problems/insert-interval",
   "https://leetcode.com/problems/palindrome-linked-list",
-  "https://leetcode.com/problems/design-in-memory-file-system",
+  // "https://leetcode.com/problems/design-in-memory-file-system", // 유료 문제
   "https://leetcode.com/problems/gas-station",
-  "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph",
+  // "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph", // 유료 문제
   "https://leetcode.com/problems/decode-ways",
   "https://leetcode.com/problems/jump-game",
   "https://leetcode.com/problems/n-queens",
@@ -117,11 +117,11 @@ const PROBLEMS = [
   "https://leetcode.com/problems/clone-graph",
   "https://leetcode.com/problems/rotate-list",
   "https://leetcode.com/problems/first-bad-version",
-  "https://leetcode.com/problems/encode-and-decode-strings",
+  // "https://leetcode.com/problems/encode-and-decode-strings", // 유료 문제
   "https://leetcode.com/problems/word-search",
   "https://leetcode.com/problems/roman-to-integer",
   "https://leetcode.com/problems/flood-fill",
-  "https://leetcode.com/problems/inorder-successor-in-bst",
+  // "https://leetcode.com/problems/inorder-successor-in-bst", // 유료 문제
   "https://leetcode.com/problems/maximum-profit-in-job-scheduling",
   "https://leetcode.com/problems/longest-palindrome",
   "https://leetcode.com/problems/top-k-frequent-words",
@@ -143,7 +143,7 @@ const PROBLEMS = [
   "https://leetcode.com/problems/path-sum-ii",
   "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array",
   "https://leetcode.com/problems/valid-parentheses",
-  "https://leetcode.com/problems/minimum-knight-moves",
+  // "https://leetcode.com/problems/minimum-knight-moves", // 유료 문제
   "https://leetcode.com/problems/product-of-array-except-self",
   "https://leetcode.com/problems/minimum-height-trees",
   "https://leetcode.com/problems/longest-increasing-path-in-a-matrix",

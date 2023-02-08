@@ -1,11 +1,10 @@
 import { CronJob as Schedule } from "cron";
 
 import PROBLEMS from "../config/problems.js";
+import TEMPLATES from "../config/templates.js";
 import GithubService from "../services/github.js";
 import toFileName from "../utils/toFileName.js";
-import toFileContent from "../utils/toFileContent.js";
 import state from "../utils/state.js";
-import leetcode from "../services/leetcode.js";
 
 const uploader = new Schedule(
   "58 10 * * 2,4",
@@ -17,11 +16,11 @@ const uploader = new Schedule(
 
       state.setUrl(url);
 
-      const { title, editor } = await leetcode(url);
+      const { name, code } = TEMPLATES.find((problem) => problem.url === url);
       const uploadResult = await github.uploadFile({
-        fileName: toFileName(title),
-        content: toFileContent(editor, url),
-        message: `(auto upload) ${title}`,
+        fileName: toFileName(name),
+        content: code,
+        message: `(auto upload) ${name}`,
       });
 
       if (!uploadResult) throw new Error();
