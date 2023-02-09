@@ -7,7 +7,7 @@ import toFileName from "../utils/toFileName.js";
 import state from "../utils/state.js";
 
 const uploader = new Schedule(
-  "58 10 * * * 1,4",
+  "00 10 * * * 1,4",
   async () => {
     try {
       const github = new GithubService();
