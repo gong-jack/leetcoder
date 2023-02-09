@@ -7,16 +7,16 @@ import toFileName from "../utils/toFileName.js";
 import state from "../utils/state.js";
 
 const uploader = new Schedule(
-  "58 10 * * 2,4",
+  "58 10 * * * 2,4",
   async () => {
     try {
       const github = new GithubService();
       const problemIndex = await github.getLatestProblemIndex();
-      const url = PROBLEMS[problemIndex + 1];
+      const url = PROBLEMS[problemIndex];
+      const { name, code } = TEMPLATES.find((problem) => problem.url === url);
 
       state.setUrl(url);
 
-      const { name, code } = TEMPLATES.find((problem) => problem.url === url);
       const uploadResult = await github.uploadFile({
         fileName: toFileName(name),
         content: code,
@@ -25,7 +25,7 @@ const uploader = new Schedule(
 
       if (!uploadResult) throw new Error();
 
-      state.setProblem(title);
+      state.setProblem(name);
     } catch (error) {
       console.error(error);
       state.setProblem("fail");
