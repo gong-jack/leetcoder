@@ -1,9 +1,12 @@
-function toFileContent(text, url) {
+export function toFileContent(text, url) {
   const fileCodeArray = text
     .split("\n")
-    .map(code => code.includes("var") ? code.replace(/var/g, "const") : code);
-  const remarkStartIndex = fileCodeArray
-    .findIndex((textCode) => textCode === "/**");
+    .map((code) =>
+      code.includes("var") ? code.replace(/var/g, "const") : code
+    );
+  const remarkStartIndex = fileCodeArray.findIndex(
+    (textCode) => textCode === "/**"
+  );
 
   const remark = ` * leetcode problem link: ${url}`;
   const space = " *";
@@ -13,5 +16,3 @@ function toFileContent(text, url) {
 
   return fileCodeArray.join(linkBreak) + linkBreak;
 }
-
-export default toFileContent;

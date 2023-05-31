@@ -1,6 +1,6 @@
 import KRLocalISOString from "./KRLocalISOString.js";
 
-const state = (() => {
+export const state = (() => {
   let problem = "";
   let url = "";
   let latestWakedUp = KRLocalISOString();
@@ -26,5 +26,3 @@ const state = (() => {
     },
   };
 })();
-
-export default state;

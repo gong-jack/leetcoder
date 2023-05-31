@@ -1,12 +1,12 @@
 import http from "http";
 import express from "express";
+import axios from "axios";
 import createError from "http-errors";
 
 import schedulerLoader from "./src/schedulers/index.js";
-import state from "./src/utils/state.js";
+import { state } from "./src/utils/index.js";
 import CONFIG from "./src/config/index.js";
 import ERROR from "./src/config/error.js";
-import axios from "axios";
 
 const app = express();
 const server = http.createServer(app);
