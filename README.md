@@ -37,6 +37,8 @@ const isValid = function(s) { // `var` 선언자는 `const`로 변경합니다.
 
 ### 버전 기록
 
+2.3.0: leetcode graphql API를 이용한 data query 적용.
+
 2.1.0: puppeteer 배포 환경 문제로, axios를 이용한 크롤링으로 변경.
 
 2.0.0: 파일 업로드 서버로 변경. cron 추가.
