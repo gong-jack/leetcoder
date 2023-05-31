@@ -1,9 +1,10 @@
 import axios from "axios";
-import CONFIG from "../config/index.js";
 import { CronJob as Schedule } from "cron";
-import state from "../utils/state.js";
 
-const awaker = new Schedule(
+import CONFIG from "../config/index.js";
+import { state } from "../utils/index.js";
+
+export const awaker = new Schedule(
   "*/10 * * * *",
   async () => {
     try {
@@ -11,14 +12,12 @@ const awaker = new Schedule(
 
       if (!!data) {
         state.wakeUp();
-      };
+      }
     } catch {
       state.setProblem("sleep");
     }
   },
   null,
   false,
-  "Asia/Seoul",
+  "Asia/Seoul"
 );
-
-export default awaker;

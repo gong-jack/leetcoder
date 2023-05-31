@@ -1,5 +1,5 @@
-import awaker from "./awaker.js";
-import uploader from "./uploader.js";
+import { awaker } from "./awaker.js";
+import { uploader } from "./uploader.js";
 
 async function schedulerLoader() {
   awaker.start();

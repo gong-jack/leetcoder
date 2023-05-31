@@ -1,31 +1,40 @@
 import { CronJob as Schedule } from "cron";
 
-import PROBLEMS from "../config/problems.js";
-import TEMPLATES from "../config/templates.js";
-import GithubService from "../services/github.js";
-import toFileName from "../utils/toFileName.js";
-import state from "../utils/state.js";
+import { PROBLEMS } from "../config/problems.js";
+import { getProblemIndex, getProblem, uploadFile } from "../lib/index.js";
+import { toFileName, toFileContent, state } from "../utils/index.js";
 
-const uploader = new Schedule(
-  "00 10 * * 1,4",
+export const uploader = new Schedule(
+  "55 9 * * 1,4",
   async () => {
     try {
-      const github = new GithubService();
-      const problemIndex = await github.getLatestProblemIndex();
-      const url = PROBLEMS[problemIndex];
-      const { name, code } = TEMPLATES.find((problem) => problem.url === url);
+      const problemIndex = await getProblemIndex();
+      let problem = null;
+
+      for await (const problemTitle of PROBLEMS.slice(problemIndex)) {
+        problem = await getProblem(problemTitle);
+
+        if (!problem.isPaidOnly) {
+          break;
+        }
+      }
+
+      const { title, titleSlug, codeSnippets } = problem;
+      const url = `https://leetcode.com/problems/${titleSlug}`;
+      const code = codeSnippets.find(({ lang }) => lang === "JavaScript").code;
 
       state.setUrl(url);
+      state.setProblem(title);
 
-      const uploadResult = await github.uploadFile({
-        fileName: toFileName(name),
-        content: code,
-        message: `(auto upload) ${name}`,
+      const uploadResult = await uploadFile({
+        fileName: toFileName(title),
+        content: toFileContent(code, url),
+        message: `(auto upload) ${title}`,
       });
 
-      if (!uploadResult) throw new Error();
-
-      state.setProblem(name);
+      if (!uploadResult) {
+        throw new Error("Fail to upload.");
+      }
     } catch (error) {
       console.error(error);
       state.setProblem("fail");
@@ -33,7 +42,5 @@ const uploader = new Schedule(
   },
   null,
   false,
-  "Asia/Seoul",
+  "Asia/Seoul"
 );
-
-export default uploader;
