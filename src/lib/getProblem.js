@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 async function graphql(query) {
   try {
     const res = await fetch("https://leetcode.com/graphql", {
