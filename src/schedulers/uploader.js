@@ -19,17 +19,19 @@ export const uploader = new Schedule(
         }
       }
 
-      console.log(problem);
-
-      const { title, titleSlug, codeSnippets } = problem;
+      const { title, titleSlug, codeSnippets, questionId } = problem;
       const url = `https://leetcode.com/problems/${titleSlug}`;
       const code = codeSnippets.find(({ lang }) => lang === "JavaScript").code;
 
       state.setUrl(url);
       state.setProblem(title);
 
+      console.log(toFileContent(code, url));
+
       const uploadResult = await uploadFile({
-        fileName: toFileName(title),
+        fileName: `[${KRLocalISOString()
+          .slice(2, 10)
+          .replace(/-/g, "")}] ${questionId}. ${text}.js`,
         content: toFileContent(code, url),
         message: `(auto upload) ${title}`,
       });
