@@ -4,7 +4,7 @@ dotenv.config();
 const GITHUB = {
   REPO: process.env.GITHUB_REPO,
   TOKEN: process.env.GITHUB_TOKEN,
-  BRANCH: "problems",
+  BRANCH: process.env.GITHUB_BRANCH,
 };
 
 export default GITHUB;
