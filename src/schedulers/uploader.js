@@ -19,14 +19,14 @@ export const uploader = new Schedule(
         }
       }
 
+      console.log(problem);
+
       const { title, titleSlug, codeSnippets } = problem;
       const url = `https://leetcode.com/problems/${titleSlug}`;
       const code = codeSnippets.find(({ lang }) => lang === "JavaScript").code;
 
       state.setUrl(url);
       state.setProblem(title);
-
-      console.log("content - ", toFileContent(code, url));
 
       const uploadResult = await uploadFile({
         fileName: toFileName(title),
@@ -40,8 +40,8 @@ export const uploader = new Schedule(
 
       console.log(`${new Date().toISOString()}: problem upload completed.`);
     } catch (error) {
-      console.error(error);
       console.log(`${new Date().toISOString()}: problem upload failed.`);
+      console.error(error);
       state.setProblem("fail");
     }
   },
