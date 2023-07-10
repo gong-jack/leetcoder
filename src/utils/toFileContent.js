@@ -1,6 +1,6 @@
 const LINE_BREAK = "\n";
 
-function toFileContent(text, url) {
+export function toFileContent(text, url) {
   const problemLinkComment = `/**
  * leetcode problem link: ${url}
  */
