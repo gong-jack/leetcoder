@@ -25,7 +25,7 @@ async function getLatestProblem() {
 
 export async function getProblemIndex() {
   const latestproblem = await getLatestProblem();
-  const [header, ...fileName] = latestproblem.split(" ");
+  const [header, index, ...fileName] = latestproblem.split(" ");
   const problemTitle = fileName.join(" ").replace(".js", "");
   const uploadedProblemIndex = PROBLEMS.findIndex(
     (problem) => problem === problemTitle
