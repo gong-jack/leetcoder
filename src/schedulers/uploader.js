@@ -5,7 +5,7 @@ import { getProblemIndex, getProblem, uploadFile } from "../lib/index.js";
 import { toFileContent, state, KRLocalISOString } from "../utils/index.js";
 
 export const uploader = new Schedule(
-  "*/5 * * * *",
+  "55 9 * * 1,4",
   async () => {
     try {
       const problemIndex = await getProblemIndex();
