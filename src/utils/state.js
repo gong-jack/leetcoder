@@ -1,4 +1,4 @@
-import KRLocalISOString from "./KRLocalISOString.js";
+import { KRLocalISOString } from "../utils/index.js";
 
 export const state = (() => {
   let problem = "";
