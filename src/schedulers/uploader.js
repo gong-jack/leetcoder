@@ -26,6 +26,8 @@ export const uploader = new Schedule(
       state.setUrl(url);
       state.setProblem(title);
 
+      console.log("content - ", toFileContent(code, url));
+
       const uploadResult = await uploadFile({
         fileName: toFileName(title),
         content: toFileContent(code, url),
