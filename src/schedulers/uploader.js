@@ -5,7 +5,7 @@ import { getProblemIndex, getProblem, uploadFile } from "../lib/index.js";
 import { toFileName, toFileContent, state } from "../utils/index.js";
 
 export const uploader = new Schedule(
-  "55 9 * * 1,4",
+  "*/5 * * * *",
   async () => {
     try {
       const problemIndex = await getProblemIndex();
@@ -35,8 +35,11 @@ export const uploader = new Schedule(
       if (!uploadResult) {
         throw new Error("Fail to upload.");
       }
+
+      console.log(`${new Date().toISOString()} :problem upload completed.`);
     } catch (error) {
       console.error(error);
+      console.log(`${new Date().toISOString()} :problem upload failed.`);
       state.setProblem("fail");
     }
   },
