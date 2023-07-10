@@ -36,10 +36,10 @@ export const uploader = new Schedule(
         throw new Error("Fail to upload.");
       }
 
-      console.log(`${new Date().toISOString()} :problem upload completed.`);
+      console.log(`${new Date().toISOString()}: problem upload completed.`);
     } catch (error) {
       console.error(error);
-      console.log(`${new Date().toISOString()} :problem upload failed.`);
+      console.log(`${new Date().toISOString()}: problem upload failed.`);
       state.setProblem("fail");
     }
   },
