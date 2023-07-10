@@ -26,8 +26,6 @@ export const uploader = new Schedule(
       state.setUrl(url);
       state.setProblem(title);
 
-      console.log(toFileContent(code, url));
-
       const uploadResult = await uploadFile({
         fileName: `[${KRLocalISOString()
           .slice(2, 10)
