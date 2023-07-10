@@ -1,4 +1,4 @@
-import KRLocalISOString from "./KRLocalISOString.js";
+import { KRLocalISOString } from "../utils/index.js";
 
 export function toFileName(text) {
   const localKRDateText = KRLocalISOString().slice(2, 10).replace(/-/g, "");
