@@ -1,5 +1,4 @@
 import axios from "axios";
-import { encode, decode } from "js-base64";
 
 import GITHUB from "../config/github.js";
 
@@ -7,8 +6,6 @@ export async function uploadFile({ fileName, content, message }) {
   const url = `https://api.github.com/repos/${GITHUB.REPO}/contents/problems/${fileName}`;
 
   try {
-    console.log(decode(encode(content)));
-
     const { data } = await axios({
       url,
       method: "PUT",
@@ -21,7 +18,7 @@ export async function uploadFile({ fileName, content, message }) {
       data: JSON.stringify({
         branch: GITHUB.BRANCH,
         message,
-        content: encode(content),
+        content: Buffer.from(content).toString("base64"),
       }),
     });
 
