@@ -2,7 +2,7 @@ import { CronJob as Schedule } from "cron";
 
 import { PROBLEMS } from "../config/problems.js";
 import { getProblemIndex, getProblem, uploadFile } from "../lib/index.js";
-import { toFileName, toFileContent, state } from "../utils/index.js";
+import { toFileContent, state, KRLocalISOString } from "../utils/index.js";
 
 export const uploader = new Schedule(
   "*/5 * * * *",
