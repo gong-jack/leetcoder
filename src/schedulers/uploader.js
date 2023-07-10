@@ -31,7 +31,7 @@ export const uploader = new Schedule(
       const uploadResult = await uploadFile({
         fileName: `[${KRLocalISOString()
           .slice(2, 10)
-          .replace(/-/g, "")}] ${questionId}. ${text}.js`,
+          .replace(/-/g, "")}] ${questionId}. ${code}.js`,
         content: toFileContent(code, url),
         message: `(auto upload) ${title}`,
       });
